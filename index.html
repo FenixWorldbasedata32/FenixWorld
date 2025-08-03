@@ -220,35 +220,29 @@
     </footer>
 
     <script>
-        function buyPrivilege(privilege) {
-            // Здесь должна быть интеграция с платежной системой
-            // Например, отправка запроса на сервер для создания платежа
-            alert(`Вы выбрали привилегию: ${privilege}\nПерейдите к оплате!`);
-
-            // Пример AJAX-запроса для покупки (нужен backend)
-            /*
-            fetch('/api/buy-privilege', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    privilege: privilege,
-                    playerName: prompt('Введите ваш ник в игре:'),
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Привилегия успешно приобретена!');
-                    // Команда для выдачи привилегии через RCON или плагин
-                    // Например: luckperms user <player> permission set group.<privilege>
-                } else {
-                    alert('Ошибка при покупке: ' + data.error);
-                }
-            });
-            */
+    function buyPrivilege(privilege) {
+        // Запрашиваем ник игрока
+        const playerName = prompt('Введите ваш ник в игре:');
+        if (!playerName) {
+            alert('Пожалуйста, введите ваш игровой ник!');
+            return;
         }
+
+        // Ссылки на внешние страницы оплаты для каждой привилегии
+        const paymentLinks = {
+            'VIP': 'https://t.me/Ua_ls2' + encodeURIComponent(playerName),
+            'Premium': 'https://t.me/Ua_ls2' + encodeURIComponent(playerName),
+            'Legend': 'https://t.me/Ua_ls2' + encodeURIComponent(playerName)
+        };
+
+        // Перенаправление на страницу оплаты
+        const paymentUrl = paymentLinks[privilege];
+        if (paymentUrl) {
+            window.location.href = paymentUrl;
+        } else {
+            alert('Ошибка: привилегия не найдена!');
+        }
+    }
     </script>
 </body>
 </html>
