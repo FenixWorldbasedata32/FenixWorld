@@ -221,18 +221,12 @@
 
     <script>
     function buyPrivilege(privilege) {
-        // Запрашиваем ник игрока
-        const playerName = prompt('Введите ваш ник в игре:');
-        if (!playerName) {
-            alert('Пожалуйста, введите ваш игровой ник!');
-            return;
-        }
 
         // Ссылки на внешние страницы оплаты для каждой привилегии
         const paymentLinks = {
-            'VIP': 'https://t.me/Ua_ls2' + encodeURIComponent(playerName),
-            'Premium': 'https://t.me/Ua_ls2' + encodeURIComponent(playerName),
-            'Legend': 'https://t.me/Ua_ls2' + encodeURIComponent(playerName)
+            'VIP': 'https://t.me/Ua_ls2',
+            'Premium': 'https://t.me/Ua_ls2',
+            'Legend': 'https://t.me/Ua_ls2'
         };
 
         // Перенаправление на страницу оплаты
