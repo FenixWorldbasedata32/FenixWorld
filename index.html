@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FenixWorld - Лучший Minecraft сервер</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff4c29;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff4c29;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: url('https://i.imgur.com/4p9Z3vS.png') no-repeat center/cover;
+        }
+
+        .hero-content {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #ff4c29;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background: #ff4c29;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 76, 41, 0.4);
+        }
+
+        .privileges {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .privileges h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #ff4c29;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid #ff4c29;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .card .price {
+            font-size: 20px;
+            color: #ff4c29;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">FenixWorld</div>
+            <ul>
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#privileges">Привилегии</a></li>
+                <li><a href="#about">О сервере</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>FenixWorld - Твой Minecraft мир!</h1>
+            <p>Присоединяйся к нашему серверу и стань частью эпичных приключений!</p>
+            <a href="minecraft://?addExternalServer=FenixWorld|play.fenixworld.ru:19132" class="btn">Подключиться к серверу</a>
+        </div>
+    </section>
+
+    <section class="privileges" id="privileges">
+        <h2>Привилегии</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>VIP</h3>
+                <p>Особый префикс, доступ к /fly, 2 дома</p>
+                <div class="price">299 ₽</div>
+                <a href="#" class="btn" onclick="buyPrivilege('VIP')">Купить</a>
+            </div>
+            <div class="card">
+                <h3>Premium</h3>
+                <p>Уникальный префикс, /heal, 5 домов</p>
+                <div class="price">599 ₽</div>
+                <a href="#" class="btn" onclick="buyPrivilege('Premium')">Купить</a>
+            </div>
+            <div class="card">
+                <h3>Legend</h3>
+                <p>Эксклюзивный префикс, /god, 10 домов</p>
+                <div class="price">999 ₽</div>
+                <a href="#" class="btn" onclick="buyPrivilege('Legend')">Купить</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 FenixWorld. Все права защищены.</p>
+    </footer>
+
+    <script>
+        function buyPrivilege(privilege) {
+            // Здесь должна быть интеграция с платежной системой
+            // Например, отправка запроса на сервер для создания платежа
+            alert(`Вы выбрали привилегию: ${privilege}\nПерейдите к оплате!`);
+
+            // Пример AJAX-запроса для покупки (нужен backend)
+            /*
+            fetch('/api/buy-privilege', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    privilege: privilege,
+                    playerName: prompt('Введите ваш ник в игре:'),
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Привилегия успешно приобретена!');
+                    // Команда для выдачи привилегии через RCON или плагин
+                    // Например: luckperms user <player> permission set group.<privilege>
+                } else {
+                    alert('Ошибка при покупке: ' + data.error);
+                }
+            });
+            */
+        }
+    </script>
+</body>
+</html>
