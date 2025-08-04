@@ -1,8 +1,12 @@
-<!DOCTYPE html>
 <html lang="ru"><head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FenixWorld - Лучший Minecraft сервер</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="FenixWorld - лучший Minecraft сервер с уникальными приключениями и эпичными битвами!">
+    <meta name="keywords" content="Minecraft, FenixWorld, сервер, привилегии, феникс">
+    <title>FenixWorld - Восстань из пепла!</title>
+    <link rel="icon" type="image/x-icon" href="https://fenixworldbasedata32.github.io/FenixWorld/file_0000000045ac620a88acc14cc3ef15cc.png">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -15,19 +19,23 @@
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: #ffffff;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
+        /* Шапка */
         header {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px 20px;
             position: fixed;
             width: 100%;
+            top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
         }
 
         nav {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -35,209 +43,700 @@
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            transition: transform 0.5s;
+        }
+
+        .logo img:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .logo span {
+            font-family: 'Press Start 2P', cursive;
+            font-size: clamp(20px, 5vw, 26px);
             color: #ff4c29;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 20px;
+            gap: 25px;
         }
 
         nav a {
             color: #fff;
             text-decoration: none;
-            transition: color 0.3s;
+            font-size: clamp(16px, 2.5vw, 18px);
+            transition: color 0.3s, transform 0.3s;
         }
 
         nav a:hover {
-            color: #ff4c29;
+            color: #ff8c00;
+            transform: translateY(-3px);
         }
 
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            color: #ff4c29;
+            cursor: pointer;
+        }
+
+        /* Геройская секция */
         .hero {
-            height: 1000px;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            position: relative;
             background: url('https://fenixworldbasedata32.github.io/FenixWorld/file_0000000045ac620a88acc14cc3ef15cc.png') no-repeat center/cover;
         }
 
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
         .hero-content {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 40px;
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
+            position: relative;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.75);
+            padding: clamp(30px, 8vw, 50px);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1.2s ease-in;
+            max-width: 90%;
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: clamp(32px, 8vw, 56px);
             margin-bottom: 20px;
             color: #ff4c29;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
         }
 
         .hero p {
-            font-size: 20px;
+            font-size: clamp(16px, 4vw, 22px);
             margin-bottom: 30px;
+            color: #ddd;
         }
 
         .btn {
-            background: #ff4c29;
+            background: linear-gradient(45deg, #ff4c29, #ff8c00);
             color: #fff;
-            padding: 15px 30px;
+            padding: clamp(12px, 3vw, 16px) clamp(30px, 6vw, 40px);
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 10px;
+            font-size: clamp(16px, 2.5vw, 18px);
             transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
         }
 
         .btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(255, 76, 41, 0.4);
+            box-shadow: 0 8px 20px rgba(255, 76, 41, 0.7);
         }
 
+        .buy-btn {
+            display: inline-block;
+            background: #ff4c29;
+            color: #fff;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+            text-align: center;
+            position: relative;
+            z-index: 2; /* Обеспечивает кликабельность поверх псевдоэлемента */
+            cursor: pointer; /* Явно указываем, что элемент кликабелен */
+        }
+
+        .buy-btn:hover {
+            background: #ff8c00;
+            transform: translateY(-3px);
+        }
+
+        .copy-ip {
+            margin-top: 20px;
+            font-size: clamp(14px, 2.5vw, 16px);
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .copy-ip:hover {
+            color: #ff8c00;
+            transform: scale(1.05);
+        }
+
+        /* Привилегии */
         .privileges {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 20px;
+            max-width: 1400px;
+            margin: clamp(60px, 10vw, 80px) auto;
+            padding: clamp(30px, 8vw, 40px) 20px;
+            text-align: center;
         }
 
         .privileges h2 {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 40px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: clamp(28px, 6vw, 40px);
             color: #ff4c29;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
         }
 
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 40vw, 320px), 1fr));
+            gap: clamp(20px, 5vw, 30px);
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(255, 76, 41, 0.3), rgba(255, 140, 0, 0.3));
+            padding: clamp(20px, 5vw, 30px);
+            border-radius: 15px;
             text-align: center;
-            transition: transform 0.3s;
-            border: 1px solid #ff4c29;
+            border: 2px solid #ff4c29;
+            transition: transform 0.4s, box-shadow 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 76, 41, 0.2), transparent);
+            transition: transform 0.5s;
+            z-index: 1; /* Устанавливаем ниже, чем buy-btn */
+        }
+
+        .card:hover::before {
+            transform: scale(1.5);
         }
 
         .card:hover {
-            transform: scale(1.05);
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(255, 76, 41, 0.6);
         }
 
         .card h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: clamp(22px, 4vw, 26px);
+            color: #fff;
+            margin-bottom: 15px;
+            z-index: 2;
+            position: relative;
         }
 
         .card p {
-            color: #ccc;
+            color: #ddd;
+            font-size: clamp(14px, 2.5vw, 16px);
             margin-bottom: 20px;
+            z-index: 2;
+            position: relative;
         }
 
         .card .price {
-            font-size: 20px;
-            color: #ff4c29;
+            font-size: clamp(20px, 3.5vw, 24px);
+            color: #ff8c00;
+            font-weight: bold;
             margin-bottom: 20px;
+            z-index: 2;
+            position: relative;
         }
 
+        /* О сервере */
+        .about {
+            max-width: 1400px;
+            margin: clamp(60px, 10vw, 80px) auto;
+            padding: clamp(30px, 8vw, 40px) 20px;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: clamp(28px, 6vw, 40px);
+            color: #ff4c29;
+            margin-bottom: 30px;
+        }
+
+        .about p {
+            font-size: clamp(16px, 3vw, 18px);
+            color: #ddd;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Галерея */
+        .gallery {
+            max-width: 1400px;
+            margin: clamp(60px, 10vw, 80px) auto;
+            padding: clamp(30px, 8vw, 40px) 20px;
+            text-align: center;
+        }
+
+        .gallery h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: clamp(28px, 6vw, 40px);
+            color: #ff4c29;
+            margin-bottom: 30px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 35vw, 280px), 1fr));
+            gap: clamp(15px, 4vw, 20px);
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: clamp(150px, 25vw, 180px);
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Контакты */
+        .contact {
+            max-width: 1400px;
+            margin: clamp(60px, 10vw, 80px) auto;
+            padding: clamp(30px, 8vw, 40px) 20px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: clamp(28px, 6vw, 40px);
+            color: #ff4c29;
+            margin-bottom: 30px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: clamp(20px, 5vw, 30px);
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: #fff;
+            font-size: clamp(14px, 2.5vw, 16px);
+            text-decoration: none;
+            padding: clamp(10px, 3vw, 12px) clamp(20px, 5vw, 25px);
+            background: rgba(255, 76, 41, 0.3);
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-links a:hover {
+            background: #ff4c29;
+            transform: translateY(-5px);
+        }
+
+        /* Футер */
         footer {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
+            background: rgba(0, 0, 0, 0.95);
+            padding: clamp(20px, 5vw, 30px);
             text-align: center;
             color: #ccc;
+            font-size: clamp(14px, 2.5vw, 16px);
         }
 
-        @media (max-width: 768px) {
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Медиа-запросы */
+        @media (max-width: 1024px) {
+            .hero {
+                height: 80vh;
+            }
+
+            .hero-content {
+                padding: clamp(20px, 6vw, 30px);
+            }
+
             .hero h1 {
-                font-size: 32px;
+                font-size: clamp(28px, 6vw, 40px);
             }
 
             .hero p {
-                font-size: 16px;
+                font-size: clamp(14px, 3.5vw, 18px);
+            }
+
+            .btn {
+                padding: clamp(10px, 3vw, 12px) clamp(25px, 5vw, 30px);
+                font-size: clamp(14px, 2.5vw, 16px);
+            }
+
+            .cards {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .card h3 {
+                font-size: clamp(20px, 4vw, 22px);
+            }
+
+            .card p {
+                font-size: clamp(13px, 2.5vw, 14px);
+            }
+
+            .card .price {
+                font-size: clamp(18px, 3.5vw, 20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 70vh;
+            }
+
+            .hero h1 {
+                font-size: clamp(24px, 6vw, 32px);
+            }
+
+            .hero p {
+                font-size: clamp(12px, 3.5vw, 16px);
+            }
+
+            .logo span {
+                font-size: clamp(18px, 4vw, 20px);
+            }
+
+            .logo img {
+                width: 40px;
+                height: 40px;
             }
 
             nav ul {
+                display: none;
                 flex-direction: column;
-                gap: 10px;
+                gap: 20px;
+                background: rgba(0, 0, 0, 0.95);
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                padding: 20px;
+                text-align: center;
+                z-index: 1000;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .privileges h2, .about h2, .gallery h2, .contact h2 {
+                font-size: clamp(24px, 5vw, 32px);
+            }
+
+            .card {
+                padding: 15px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item img {
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                height: 60vh;
+            }
+
+            .hero-content {
+                padding: 15px;
+            }
+
+            .hero h1 {
+                font-size: clamp(20px, 6vw, 28px);
+            }
+
+            .hero p {
+                font-size: clamp(12px, 3.5vw, 14px);
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .buy-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .copy-ip {
+                font-size: 12px;
+            }
+
+            .privileges, .about, .gallery, .contact {
+                margin: 40px auto;
+                padding: 20px 15px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
             }
         }
     </style>
-<link rel="stylesheet" href="chrome-extension://ihcjicgdanjaechkgeegckofjjedodee/app/content-style.css"></head>
+<script src="https://gtmpx.com/code?h=&amp;t=1754274342312" type="text/javascript" defer="" async=""></script></head>
 <body>
+    <!-- Частицы -->
+    <canvas id="particles" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;" width="1920" height="1152"></canvas>
+
     <header>
         <nav>
-            <div class="logo">FenixWorld</div>
-            <ul>
-                <li><a href="#home">Главная</a></li>
-                <li><a href="#privileges">Привилегии</a></li>
-                <li><a href="#about">О сервере</a></li>
-                <li><a href="#contact">Контакты</a></li>
+            <div class="logo">
+                <img src="https://fenixworldbasedata32.github.io/FenixWorld/file_0000000045ac620a88acc14cc3ef15cc.png" alt="FenixWorld Logo">
+                <span>FenixWorld</span>
+            </div>
+            <ul id="nav-menu">
+                <li><a href="#home" onclick="smoothScroll('home')">Главная</a></li>
+                <li><a href="#privileges" onclick="smoothScroll('privileges')">Привилегии</a></li>
+                <li><a href="#about" onclick="smoothScroll('about')">О сервере</a></li>
+                <li><a href="#gallery" onclick="smoothScroll('gallery')">Галерея</a></li>
+                <li><a href="#contact" onclick="smoothScroll('contact')">Контакты</a></li>
             </ul>
+            <i class="fa fa-bars menu-toggle" onclick="toggleMenu()"></i>
         </nav>
     </header>
 
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>FenixWorld - Твой Minecraft мир!</h1>
-            <p>Присоединяйся к нашему серверу и стань частью эпичных приключений!</p>
-            <a href="minecraft://?addExternalServer=FenixWorld|play.fenixworld.ru:19132" class="btn">Подключиться к серверу</a>
+            <h1>FenixWorld - Восстань из пепла!</h1>
+            <p>Эпичный Minecraft сервер с уникальными приключениями, мощной экономикой и дружелюбным сообществом!</p>
+            <a href="minecraft://?addExternalServer=FenixWorld|srv2.godlike.club:26669" class="btn">Подключиться</a>
+            <div class="copy-ip" onclick="copyToClipboard('srv2.godlike.club:26669')">
+                IP: srv2.godlike.club:26669 <i class="fa fa-copy"></i>
+            </div>
         </div>
     </section>
 
     <section class="privileges" id="privileges">
         <h2>Привилегии</h2>
         <div class="cards">
-            <div class="card">
-                <h3>VIP</h3>
-                <p>Особый префикс, доступ к /fly, 2 дома</p>
+            <div class="card" style="opacity: 1; transform: translateY(0px); transition: opacity 0.5s, transform 0.5s;">
+                <h3>Админ</h3>
+                <p>Особый префикс, /fly, /good, 2 дома, эксклюзивные киты</p>
                 <div class="price">299 ₽</div>
-                <a href="#" class="btn" onclick="buyPrivilege('VIP')">Купить</a>
+                <a href="https://t.me/Ua_ls2" class="buy-btn">Купить</a>
             </div>
-            <div class="card">
-                <h3>Premium</h3>
-                <p>Уникальный префикс, /heal, 5 домов</p>
-                <div class="price">599 ₽</div>
-                <a href="#" class="btn" onclick="buyPrivilege('Premium')">Купить</a>
+            <div class="card" style="opacity: 1; transform: translateY(0px); transition: opacity 0.5s, transform 0.5s;">
+                <h3>Анти-чит</h3>
+                <p>Уникальный префикс, /gm 1,2,3 ,/schekplayer, /vanish, /tp,/tpo, /time set,/lagg clear, 5 домов, увеличенный лимит ресурсов</p>
+                <div class="price">350 ₽</div>
+                <a href="https://t.me/Ua_ls2" class="buy-btn">Купить</a>
             </div>
-            <div class="card">
-                <h3>Legend</h3>
-                <p>Эксклюзивный префикс, /god, 10 домов</p>
-                <div class="price">999 ₽</div>
-                <a href="#" class="btn" onclick="buyPrivilege('Legend')">Купить</a>
+            <div class="card" style="opacity: 1; transform: translateY(0px); transition: opacity 0.5s, transform 0.5s;">
+                <h3>хелпер</h3>
+                <p>Эксклюзивный префикс,/gm 1,2,3 ,/schekplayer, /vanish, /tp,/tpo, /time set,/lagg clear, 5 домов, VIP-скины</p>
+                <div class="price">465 ₽</div>
+                <a href="https://t.me/Ua_ls2" class="buy-btn">Купить</a>
             </div>
         </div>
     </section>
 
+    <section class="about" id="about" style="opacity: 1; transform: translateY(0px); transition: opacity 0.5s, transform 0.5s;">
+        <h2>О сервере</h2>
+        <p>FenixWorld — это место, где оживают легенды Minecraft! Наш сервер предлагает уникальный игровой опыт с самописными плагинами, регулярными ивентами и дружелюбным сообществом. Восстань из пепла и стань частью нашего мира, где каждый игрок может оставить свой след!</p>
+    </section>
+
+    <section class="gallery" id="gallery" style="opacity: 0; transform: translateY(60px); transition: opacity 0.5s, transform 0.5s;">
+        <h2>Галерея</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://fenixworldbasedata32.github.io/FenixWorld/image.png" alt="Скриншот 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://fenixworldbasedata32.github.io/FenixWorld/image2.png" alt="Скриншот 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://fenixworldbasedata32.github.io/FenixWorld/image3.png" alt="Скриншот 3">
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact" style="opacity: 0; transform: translateY(60px); transition: opacity 0.5s, transform 0.5s;">
+        <h2>Контакты</h2>
+        <div class="contact-links">
+            <a href="https://t.me/fenixworld1" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            <a href="https://discord.gg/bx9RqzFRQV" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+            <a href="https://mail.google.com/mail/u/0/?tab=rm&amp;ogbl#sent?compose=CllgCKCGmKXLVvGmssLQWwpVrcLzwVblQSnbcPTtLvcjhfdNdqrhsNHvkHNpFFsSpndKDWzHnxB"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+    </section>
+
     <footer>
-        <p>© 2025 FenixWorld. Все права защищены.</p>
+        <p>© 2025 FenixWorld. Восстань из пепла!</p>
     </footer>
 
     <script>
-    function buyPrivilege(privilege) {
-
-        // Ссылки на внешние страницы оплаты для каждой привилегии
-        const paymentLinks = {
-            'VIP': 'https://t.me/Ua_ls2',
-            'Premium': 'https://t.me/Ua_ls2',
-            'Legend': 'https://t.me/Ua_ls2'
-        };
-
-        // Перенаправление на страницу оплаты
-        const paymentUrl = paymentLinks[privilege];
-        if (paymentUrl) {
-            window.location.href = paymentUrl;
-        } else {
-            alert('Ошибка: привилегия не найдена!');
+        // Плавная прокрутка
+        function smoothScroll(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+            if (window.innerWidth <= 768) toggleMenu();
         }
-    }
+
+        // Копирование IP
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('IP скопирован: ' + text);
+            });
+        }
+
+        // Мобильное меню
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+
+        // Частицы
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particlesArray = [];
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 5 + 1;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.color = `hsl(${Math.random() * 60 + 10}, 100%, 50%)`;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.size > 0.2) this.size -= 0.05;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function handleParticles() {
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+                if (particlesArray[i].size <= 0.2) {
+                    particlesArray.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (particlesArray.length < (window.innerWidth <= 768 ? 50 : 100)) {
+                particlesArray.push(new Particle());
+            }
+            handleParticles();
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Отключение частиц на слабых устройствах
+        if (window.innerWidth > 480 && !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            animateParticles();
+        }
+
+        // Анимация появления
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.card, .about, .gallery, .contact').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(60px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
     </script>
 
-
-</body>
-</html>
+<script id="guaHRtbA==" src="https://gtmpx.com/ga?v=2&amp;extId=a99610f9af7f4c48985ebb361724848d-chrome-700"></script></body></html>
